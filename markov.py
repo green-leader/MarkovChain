@@ -1,5 +1,5 @@
 import numpy as np
-import random
+from collections import defaultdict
 
 trump = open('speeches.txt', encoding='utf8').read()
 
@@ -13,13 +13,10 @@ def make_pairs(corpus):
 
 pairs = make_pairs(corpus)
 
-word_dict = dict()
 
-for word_1, word_2 in pairs:
-    if word_1 in word_dict.keys():
-        word_dict[word_1].append(word_2)
-    else:
-        word_dict[word_1] = [word_2]
+word_dict = defaultdict(list)
+for key, value in pairs:
+    word_dict[key].append(value)
 
 first_word = np.random.choice(corpus)
 
