@@ -11,7 +11,8 @@ class MarkovChain:
         corpus = open(text, encoding='utf8').read().split()
         pairs = self.make_pairs(corpus)
         for key, value in pairs:
-            self.word_dict[key].append(value)
+            if value not in self.word_dict[key]:
+                self.word_dict[key].append(value)
 
     def make_pairs(self, corpus):
         for i in range(len(corpus)-1):
