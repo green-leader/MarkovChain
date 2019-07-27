@@ -18,7 +18,9 @@ class MarkovChain:
             yield (corpus[i], corpus[i+1])
 
     def generate(self, length):
-        first_word = np.random.choice(list(self.word_dict.keys()))
+        first_word = None
+        while first_word is None or first_word.islower():
+            first_word = np.random.choice(list(self.word_dict.keys()))
         chain = [first_word]
         for i in range(length):
             chain.append(np.random.choice(self.word_dict[chain[-1]]))
