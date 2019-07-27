@@ -8,7 +8,16 @@ class MarkovChain:
         self.word_dict = defaultdict(list)
 
     def read(self, text):
+        """read a text file for corpus information"""
         corpus = open(text, encoding='utf8').read().split()
+        pairs = self.make_pairs(corpus)
+        for key, value in pairs:
+            if value not in self.word_dict[key]:
+                self.word_dict[key].append(value)
+
+    def reads(self, text):
+        """use supplied string as corpus information"""
+        corpus = text.split()
         pairs = self.make_pairs(corpus)
         for key, value in pairs:
             if value not in self.word_dict[key]:
@@ -34,3 +43,8 @@ if __name__ == '__main__':
     test.read('timecube.txt')
     # test.read('sample.txt')
     print(test.generate(30))
+
+    test = None
+    test = MarkovChain()
+    test.reads('The quick brown fox jumped over the lazy dog')
+    print(test.generate(9))
