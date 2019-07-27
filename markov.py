@@ -22,7 +22,7 @@ class MarkovChain:
         while first_word is None or first_word.islower():
             first_word = np.random.choice(list(self.word_dict.keys()))
         chain = [first_word]
-        for i in range(length):
+        for i in range(length - 1):
             chain.append(np.random.choice(self.word_dict[chain[-1]]))
         return ' '.join(chain)
 
@@ -30,4 +30,5 @@ class MarkovChain:
 test = MarkovChain()
 test.read('speeches.txt')
 test.read('timecube.txt')
+# test.read('sample.txt')
 print(test.generate(30))
