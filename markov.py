@@ -27,8 +27,9 @@ class MarkovChain:
         return ' '.join(chain)
 
 
-test = MarkovChain()
-test.read('speeches.txt')
-test.read('timecube.txt')
-# test.read('sample.txt')
-print(test.generate(30))
+if __name__ == '__main__':
+    test = MarkovChain()
+    test.read('speeches.txt')
+    test.read('timecube.txt')
+    # test.read('sample.txt')
+    print(test.generate(30))
