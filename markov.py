@@ -8,7 +8,7 @@ class MarkovChain:
         self.word_dict = defaultdict(list)
 
     def read(self, text):
-        corpus = open('speeches.txt', encoding='utf8').read().split()
+        corpus = open(text, encoding='utf8').read().split()
         pairs = self.make_pairs(corpus)
         for key, value in pairs:
             self.word_dict[key].append(value)
@@ -27,4 +27,5 @@ class MarkovChain:
 
 test = MarkovChain()
 test.read('speeches.txt')
+test.read('timecube.txt')
 print(test.generate(30))
