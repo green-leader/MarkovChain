@@ -1,9 +1,7 @@
 import numpy as np
 from collections import defaultdict
 
-trump = open('speeches.txt', encoding='utf8').read()
-
-corpus = trump.split()
+corpus = open('speeches.txt', encoding='utf8').read().split()
 
 
 def make_pairs(corpus):
