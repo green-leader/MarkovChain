@@ -34,6 +34,8 @@ class MarkovChain:
         chain = [first_word]
         for i in range(length - 1):
             chain.append(np.random.choice(self.word_dict[chain[-1]]))
+            if len(self.word_dict[chain[-1]]) == 0:
+                break
         return ' '.join(chain)
 
 
@@ -47,4 +49,4 @@ if __name__ == '__main__':
     test = None
     test = MarkovChain()
     test.reads('The quick brown fox jumped over the lazy dog')
-    print(test.generate(9))
+    print(test.generate(30))
